@@ -27,13 +27,11 @@ ws.on("message", async (data) => {
   console.log("Received update:", message);
 
   try {
-    await prisma.solanaUpdate.upsert({
-      where: { account: "5u2zs1S8R9z3sfMp5XiaXqtZZmMadLCULyBrVLz5RTvo" },
-      update: { data: message },
-      create: {
-        account: "5u2zs1S8R9z3sfMp5XiaXqtZZmMadLCULyBrVLz5RTvo",
-        data: message,
-      },
+    await prisma.solanaUpdate.create({
+      data: {
+        data:message,
+        account: '5u2zs1S8R9z3sfMp5XiaXqtZZmMadLCULyBrVLz5RTvo'
+      }
     });
     console.log("Data saved to PostgreSQL!");
   } catch (error) {

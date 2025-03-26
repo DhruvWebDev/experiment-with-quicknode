@@ -9,7 +9,7 @@ datasource db {
 
 model SolanaUpdate {
   id        String   @id @default(uuid())  // UUID for primary key
-  account   String   @unique               // Solana account public key
+  account   String                  // Solana account public key
   data      Json                              // Store full WebSocket JSON data
   createdAt DateTime @default(now())       // Timestamp
 }
